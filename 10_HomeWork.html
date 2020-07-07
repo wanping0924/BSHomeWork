@@ -1,85 +1,818 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="normalize.css">
     <title>Document</title>
+    <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>
     <style>
-        .contact{
-            background-color: #000;
-            display: flex;
-            justify-content: space-around;
-            padding: 15px;
-            margin: auto;
+        .telfixed{
+            /* border: 2px solid #ff8800; */
+            position: fixed;
+            bottom: 15px;
+            left: 15px;
+            font-size: 35px;
+            background-color: #fff;
+            border-radius: 100px;
+            box-shadow: 2px 2px 5px #000;
+            padding: 20px;
+            color: #ff8800;
+            z-index: 1;
         }
-        .tel{
-            color: #fff;
+        .Tel {
+            background-color: #222;
         }
-        .icon img{
-           border-radius: 10px;
-        }
-        .header{
-            border:2px solid red;
+
+        .TelRow {
+            font-size: 20px;
+            font-family: Lato, sans-serif;
             padding: 20px;
             display: flex;
             justify-content: space-around;
         }
-        /* .menu1,.btn{
-           
-        } */
-        .menu .menu1 a{
-            text-decoration: none;
-            color: #000;
-            margin-right: 10px; 
+
+        .Tellogo,.icon {
+            width: 300px;
         }
-        .logo a{
-            text-decoration: none;
-            font-size: 40px;
-            color: #000;
-            
+
+        .Tellogo {
+            margin-right: 150px;
         }
-        .btn a{
-            text-decoration: none;
-            border: 2px solid #FF8800;
-            font-size: 14px;
-            padding: 5px 5px;
+
+        .icon {
+            text-align: right;
+            margin-left: 150px;
+        }
+
+        .fas {
             color: #FF8800;
         }
-        /* .btn a:hover{
-           border-bottom: 2px solid #ff8800;
+
+        .tel {
+            color: #fff;
+        }
+
+        .icon i {
+            color: #fff;
+        }
+        
+        .header {
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .header .headbar{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100px;
+        }
+        .logo {
+            display: flex;
+        }
+
+        .logo a {
+            /* border: 2px solid red; */
+            display: inline-block;
+            text-decoration: none;
+            color: #535353;
+            font-weight: 700;
+            font-size: 50px;
+            margin-left: 10px;
+            margin-top: 5px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #000;
+            font-family: 'Lato', sans-serif;
+            margin: auto 10px;
+            letter-spacing: 1px;
+        }
+        .menu a:hover{
+            border-bottom: 2px solid #ff8800;
+            
+        }
+        .header .Donate button {
+            padding: 20px 30px;
+            border: 2px solid #FF8800;
+            color: #FF8800;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            font-weight: 600;
+            font-size: 12px;
+            background-color: #fff;
+        }
+
+        .header .Donate button:hover {
+            background-color: #337ab7;
+            border: 2px solid #337ab7;
+            transition: .3s;
+            border-radius: 2px;
+            color: #fff;
+        }
+
+        .banner {
+            position: relative;
+        }
+
+        .banner img {
+            display: block;
+            width: 100%;
+        }
+
+        .bannerText {
+            position: absolute;
+            margin: auto 200px;
+        }
+
+        .need {
+            font-family: 'Lato', sans-serif;
+            font-weight: 500;
+            font-size: 70px;
+            color: #535353;
+        }
+
+        .Help {
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            color: #7abee9;
+            font-size: 70px;
+            line-height: 1.1;
+        }
+
+        .you {
+            font-family: 'Lato', sans-serif;
+            color: #535353;
+            margin-bottom: 50px;
+        }
+
+        .bannerText a {
+            text-decoration: none;
+            color: #FF8800;
+            border: 2px solid #FF8800;
+            background-color: #FF8800;
+            color: #fff;
+            padding: 20px;
+        }
+        .bannerText a:hover{
+            border: 2px solid #000;
+            background-color: #000;
+            color: #fff;
+        }
+        .about {
+            display: flex;
+            margin: 10px;
+            padding: 150px;
+        }
+
+        .divpic {
+            width: 50%;
+        }
+
+        .divpic img {
+            width: 100%;
+        }
+
+        .about .aboutText {
+            /* border: 2px solid red; */
+            width: 50%;
+        }
+
+        .aboutT {
+            margin-left: 5px;
+            margin-top: 100px;
+        }
+
+        .aboutText h2 {
+            font-size: 34px;
+            line-height: 1.5;
+        }
+
+        .aboutText h3 {
+            color: #7abee9;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .aboutText .word {
+            margin: 20px auto;
+        }
+
+        .aboutText button {
+            border: 2px solid #FF8800;
+            background-color: #FF8800;
+            color: #fff;
+            padding: 20px;
+        }
+        .aboutText button:hover{
+            border: 2px solid #000;
+            background-color: #000;
+            color: #fff;
+        }
+        .help {
+            background-color: #f9f9f9;
+            margin: 10px;
+        }
+
+        .help .word {
+            text-align: center;
+        }
+
+        .help h2 {
+            color: #535353;
+            font-size: 50px;
+            font-weight: 700;
+            margin-top: 10px;
+            margin: 10px;
+        }
+
+        .help h3 {
+            font-size: 30px;
+            margin-top: 5px;
+            color: #7abee9;
+            ;
+        }
+
+        .help .helpPic {
+            display: flex;
+            margin: 10px;
+            padding: 150px;
+        }
+
+        .help .divpic {
+            margin: -80px 10px auto;
+            position: relative;
+            justify-content: center;
+        }
+        .help .divpic:hover{
+            transition: .3s;
+            filter:brightness(.5)
+        }
+        .help .divpic p {
+            position: absolute;
+            color: #fff;
+            font-size: 40px;
+            margin: 400px 100px;
+        }
+        .help .divpic p:hover{
+            color: #ff8800;
+        }
+        .save {
+            display: flex;
+            justify-content: center;
+            padding:50px 150px;
+
+        }
+
+        .save .divpic {
+            margin: 50px;
+            margin-top: -50px;
+        }
+
+        .save .divpic .Spic1Text {
+            text-align: right;
+            margin-top: -50px;
+        }
+
+        .save .divpic .Spic1Text p {
+            font-size: 40px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            color: #535353;
+        }
+
+        .save .divpic .Spic2Text {
+            margin-top: 5px;
+        }
+
+        .save .divpic .Spic2Text p {
+            font-size: 20px;
+            color: #8d8d8d;
+        }
+
+        .save .divpic .Spic2Text .btn {
+            margin-top: 94px;
+        }
+
+        .save .divpic .Spic2Text .btn button {
+            background-color: #FF8800;
+            border: 2px solid #FF8800;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+            line-height: 24px;
+            letter-spacing: 1px;
+        }
+
+        .save .divpic .Spic2Text .btn :hover {
+            background-color: #000;
+            border: 2px solid #000;
+            transition: 0.3s;
+        }
+
+        .events {
+            display: flex;
+            /* border: 2px  solid red; */
+            justify-content: center;
+            position: relative;
+        }
+
+        .events .divpic {
+            width: 1200px;
+        }
+
+        .events .eveText {
+            position: absolute;
+        }
+
+        .events .eveText .up {
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            color: #535353;
+            font-size: 50px;
+            font-weight: 500;
+        }
+
+        .events .eveText .ke {
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            color: #7abee9;
+            font-size: 60px;
+            font-weight: 500;
+            margin-top: -40px;
+        }
+
+        .events .eveText .fr {
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            color: #535353;
+            font-size: 24px;
+            margin-top: -45px;
+        }
+
+        .events .eveText .btn {
+            width: 478px;
+            /* border: 2px  solid red; */
+            text-align: right;
+        }
+
+        .events .eveText .btn button {
+            background-color: #FF8800;
+            border: 2px solid #FF8800;
+            font-family: 'Lato', sans-serif;
+            text-align: center;
+            color: #fff;
+            padding: 20px 54px;
+            margin-left: 20px;
+            letter-spacing: 1px;
+        }
+
+        .events .eveText .btn button:hover {
+            background-color: #337ab7;
+            border: 2px solid #337ab7;
+            transition: .3s;
+        }
+        .dog{
+            background-color: #FF8800;
+            margin: 100px auto;
+        }
+        .dog .whiteDog{
+            padding-bottom: 10px;
+
+        }
+        .dog .whiteDog img{
+            width: 100%;
+        }
+        /* .news {
         } */
+        .news .la {
+            font-weight: 500;
+            font-family: 'Lato', sans-serif;
+            color: #535353;
+            font-size: 45px;
+            text-align: center;
+        }
+        .news .see {
+            font-weight: 500;
+            font-family: 'Lato', sans-serif;
+            color: #7abee9;
+            font-size: 25px;
+            text-align: center;
+            margin-top: -25px;
+            margin-bottom: 50px;
+        }
+        .news .pic {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .news .pic .pic1 {
+            width: 1200px;
+        }
+        .news .pic .pic2 {
+            position: relative;
+            width: 585px;
+            margin: 15px;
+        }
+        .news .pic .pic2 .npic2Text .picface img{
+            position: absolute;
+            width: 100px;
+            border-radius:180px;
+            margin-top: 80px;
+            margin-left: 235px;
+        }
+        .news .pic .pic2 .npic2Text .ntext{
+            position: absolute;
+            text-align: center;
+            color: #fff;
+            margin-top:190px;
+            margin-left: 120px;
+        }
+        .news .pic .pic2 .npic2Text .ntext .aName{
+            text-decoration: none;
+            color: #fff;
+        }
+        .news .pic .pic2 .npic2Text .ntext .aName:hover{
+            color: #ff8800;
+        }
+        .news .pic .pic2 .npic2Text .acontainer .atext{
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 15%;
+        }
+        .news .pic .pic2 .npic2Text .acontainer .atext:hover{
+            color: #ff8800;
+            transition: .3s;
+        }
+        .news .pic .pic3 {
+            position: relative;
+            width: 585px;
+            margin: 15px;
+        }
+        .news .pic .pic3 .pic3Text{
+            position:absolute;
+            text-align: center;
+            margin-top: 75px;
+            margin-left: 77px;
+
+        }
+        .news .pic .pic3 .pic3Text .pic3face img{
+            width:100px ;
+            border-radius: 180px;
+        }
+        .news .pic .pic3 .pic3Text .donametext p{
+            text-align: center;
+            color: #fff;
+        }
+        .news .pic .pic3 .pic3Text .donametext .pic3a{
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+        }
+        .news .pic .pic3 .pic3Text .donametext .pic3a:hover{
+            color: #ff8800;
+        }
+        .news .pic .pic3 .pic3Text .donametext .container .dotext{
+            font-weight: 700;
+            font-size: 30px;
+        }
+        .news .pic .pic3 .pic3Text .donametext .container .dotext p:hover{
+            color: #ff8800;
+            transition: .3s;
+        }
+        .record {
+            position: relative;
+            margin-top: 40px;
+        }
+        .record img{
+            width: 100%;
+            height: 450px;
+        }
+        .record .divpic{
+            position: absolute;
+            display: flex;
+            justify-content:space-between ;
+            padding: 85px 355px;
+        }
+        .record .divpic .div img{
+            width: 150px;
+            height: 150px;
+            color: #fff;
+        }
+        .record .divpic .div .num{
+            color: #fff;
+            text-align: center;
+        }
+        .record .divpic .div .num .recordnum{
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 60px;
+            line-height: 0;
+        }
+        /*.ig .pic .divpic:hover{
+             background-color: #ff8800;
+            filter: grayscale(50%) blur(3px);
+            opacity: .8;
+        } */
+        .ig h3{
+            text-align: center;
+            font-family: 'Lato', sans-serif;
+            color: #535353;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 2;
+        }
+        .ig .pic{
+            display: flex;
+        }
+        footer img{
+            width: 100%;
+        }
+        .footdiv{
+            position: relative;
+
+        }
+        .footdiv .ftposition{
+            position: absolute;
+            color: #fff;
+            text-align: center;
+            padding: 100px 425px;
+        }
+        .footdiv .ftposition .footlogo{
+            display: flex;
+            justify-content: center;
+        }
+        .footdiv .ftposition .footlogo p{
+            font-size: 40px;
+            padding-right: 20px;
+            padding-left: 20px;
+            line-height: 0;
+        }
+        .footdiv .ftposition .footlogo .footdata{
+            line-height: 1.5;
+        }
     </style>
+
 </head>
+
 <body>
-    <div class="contact">
-        <div class="icontel">
-            <img src="https://picsum.photos/20/20/?random=1">
-        <span class="tel">Toll-free: (123) 456-7890</span>
-        </div>
-        <div class="icon">
-            <img src="https://picsum.photos/20/20/?random=2">
-            <img src="https://picsum.photos/20/20/?random=3">
-            <img src="https://picsum.photos/20/20/?random=4">
-            <img src="https://picsum.photos/20/20/?random=5">
+    <div class="telfixed">
+        <a href=""><i class="fas fa-phone-alt"></i></a>
+    </div>
+    <div class="Tel">
+        <div class="TelRow">
+            <div class="Row Tellogo">
+                <i class="fas fa-phone-alt"></i>
+                <span class="tel">Toll-free: (123) 456-7890</span>
+            </div>
+            <div class="Row icon">
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-pinterest"></i>
+                <i class="fab fa-linkedin-in"></i>
+            </div>
         </div>
     </div>
     <div class="header">
-        <div class="logo">
-            <img src="" alt="">
-            <a href="#">Anilove</a>
-        </div>
-        <div class="menu">
-            <nav class="menu1">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Events</a>
-                <a href="#">News</a>
-                <a href="#">Contacts</a>
-            </nav>
-        </div>
-        <div class="btn">
-            <a href="#">DONATE NOW!</a>
+        <div class="headbar">
+            <div class="logo">
+                <img src="CSSHomeWork/asset 0.png" alt="">
+                <div class="logotext">
+                    <a href="#">Anilove</a>
+                </div>
+            </div>
+            <div class="menu">
+                <nav>
+                    <a href="#">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Events</a>
+                    <a href="#">News</a>
+                    <a href="#">Contacts</a>
+                </nav>
+            </div>
+            <div class="Donate">
+                <button>DONATE NOW!</button>
+            </div>
         </div>
     </div>
+    
+    <div class="banner">
+        <div class="bannerText">
+            <p class="need">Animals Need</p>
+            <p class="Help">YOUR Help!</p>
+            <p class="you">You can chip in with money & effort!</p>
+            <div class="doPic">
+                <a href="#">DONATE NOW!</a>
+            </div>
+        </div>
+        <img src="CSSHomeWork/asset 9.jpeg" alt="">
+    </div>
+    <div class="about">
+        <div class="divpic">
+            <img src="CSSHomeWork/asset 1.jpeg" alt="">
+        </div>
+        <div class="aboutText">
+            <div class="aboutT">
+                <h2 class="word">About Us</h2>
+                <h3 class="word">What Makes Us Care About Pets?</h3>
+                <p class="word">If it wasn’t for our founder’s childhood spent on a ranch in northern Texas, surrounded
+                    by domestic animals and pets all the time till she went to college – there might have been no
+                    Anilove animal shelter now. So as soon as she graduated with her Veterinary degree 12 years ago, she
+                    already knew what she will be doing for a living.</p>
+                <p class="word">
+                    All in all, with thousands of animals saved off the streets and cared for every year, we hope to
+                    encourage much more pet adoptions to happen!</p>
+                <button>LEARN MORE</button>
+            </div>
+        </div>
+    </div>
+    <div class="help">
+        <h2 class="word">How You Can Help</h2>
+        <h3 class="word">There Are Countless Ways You Can Join In & Help Us!</h3>
+        <div class="helpPic">
+            <div class="divpic">
+                <a href="#">
+                    <p>Volunteer</p>
+                </a>
+                <img src="CSSHomeWork/asset 10.jpeg" alt="圖片說明">
+            </div>
+            <div class="divpic">
+                <a href="#">
+                    <p>Adopt</p>
+                </a>
+                <img src="CSSHomeWork/asset 11.jpeg" alt="圖片說明">
+            </div>
+            <div class="divpic">
+                <a href="#">
+                    <p>sposor</p>
+                </a>
+                <img src="CSSHomeWork/asset 12.jpeg" alt="圖片說明">
+            </div>
+        </div>
+    </div>
+    <div class="save">
+        <div class="divpic">
+            <div class="Spic1Text">
+                <p>Volunteer to Save</p>
+                <p>Animals Now!</p>
+            </div>
+            <img src="CSSHomeWork/asset 2.jpeg" alt="圖片說明">
+        </div>
+        <div class="divpic">
+            <img src="CSSHomeWork/asset 3.jpeg" alt="圖片說明">
+            <div class="Spic2Text">
+                <p>With so many pets less fortunate than your cat and dog, there’s always something you can do about it!
+                </p>
+                <div class="btn">
+                    <button>VOLUNTEER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="events">
+        <div class="divpic">
+            <img src="CSSHomeWork/asset13.jpeg" alt="圖片說明">
+        </div>
+        <div class="eveText">
+            <p class="up">Upcoming Events</p>
+            <p class="ke">Kennel Training Class</p>
+            <p class="fr">FR, June 11th</p>
+            <div class="btn">
+                <button class="de">DETAILS</button>
+                <button class="vi">VIEW ALL</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="dog">
+        <div class="whiteDog">
+            <img src="CSSHomeWork/asset 15.jpeg" alt="">
+        </div>
+    </div>
+    <div class="news">
+        <h2 class="la">Latest News & Updates</h2>
+        <p class="see">See a Video Review of Our Cutest Pets!</p>
+        <div class="pic">
+            <div class="divpic pic1">
+                <video width="1200" height="500" controls>
+                <source src="plaza_time_lapse-1.mp4" type="video/ogg">
+            </div>
+            <div class="divpic pic2">
+                <div class="npic2Text">
+                    <div class="picface">
+                        <img src="CSSHomeWork/02.jpg" alt="">
+                    </div>
+                    <div class="ntext">
+                        <p>18 Sept, by <a class="aName" href="#">Jennifer Moreno</a></p>
+                        <div class="acontainer">
+                            <a class="atext" href="#">
+                                <p>New Advancements in the</p>
+                                <p>Veterinary Industry</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <img src="CSSHomeWork/asset 16.jpeg" alt="">
+            </div>
+            <div class="divpic pic3">
+                <div class="pic3Text">
+                    <div class="pic3face">
+                        <img src="CSSHomeWork/01.jpg" alt="">
+                    </div>
+                    <div class="donametext">
+                        <p>18 Sept, by <a class="pic3a aname" href="#">Jennifer Moreno</a></p>
+                        <div class="container">
+                            <a class="pic3a dotext" href="#">
+                                <p>Do Dogs Hate It When You Hug <br>Them? </p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <img src="CSSHomeWork/asset 17.jpeg" alt="圖片說明1">
+            </div>
+        </div>
+    </div>
+    <div class="record">
+        <div class="divpic">
+            <div class="div pic1 ">
+                <img src="CSSHomeWork/record01.jpg" alt="">
+                <div class="num">
+                    <p class="recordnum">1000</p>
+                    <p>Pets</p>
+                </div>
+            </div>
+            <div class="div pic2">
+                <img src="CSSHomeWork/record02.jpg" alt="">
+                <div class="num">
+                    <p class="recordnum">20</p>
+                    <p>Awards</p>
+                </div>
+            </div>
+            <div class="div pic3">
+                <img src="CSSHomeWork/record03.jpg" alt="">
+                <div class="num">
+                    <p class="recordnum">100</p>
+                    <p>Staffers</p>
+                </div>
+            </div>
+            <div class="div pic4">
+                <img src="CSSHomeWork/record04.jpg" alt="">
+                <div class="num">
+                    <p class="recordnum">1200</p>
+                    <p>Contributors</p>
+                </div>
+            </div>
+        </div>
+        <img src="CSSHomeWork/asset 18.jpeg" alt="">
+    </div>
+    <div class="ig">
+        <h3>See Our Adorable Pets @Instagram!</h3>
+        <div class="pic">
+            <div class="divpic">
+                <img src="CSSHomeWork//asset 5.jpeg" alt="">
+            </div>
+            <div class="divpic">
+                <img src="CSSHomeWork//asset 6.jpeg" alt="">
+            </div>
+            <div class="divpic">
+                <img src="CSSHomeWork//asset 7.jpeg" alt="">
+            </div>
+            <div class="divpic">
+                <img src="CSSHomeWork//asset 8.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footdiv">
+            <div class="ftposition">
+                <div class="footlogo">
+                    <div class="fotlogo">
+                        <img src="CSSHomeWork/asset 0.png" alt="">
+                    </div>
+                    <p>Anilove</p>
+                </div>
+                <div class="footicon">
+                    <a href="#"><i class="fab fa-twitter-square"></i></a>
+                    <a href="#"><i class="fab fa-facebook-square"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-square"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <div class="footdata">
+                    <p>Paid for by the ConLiberal NATIONAL COMMITTEE</p>
+                    <p>(123) 456-7890</p>
+                    <p>ConLiberal NATIONAL COMMITTEE 430 South Capitol Street Southeast Washington, DC 20003</p>
+                    <p>2020 © Anilove. All rights reserved. </p>
+                </div>
+            </div>
+        </div>
+        <img src="CSSHomeWork/asset 19.jpeg" alt="">
+    </footer>
 </body>
+
 </html>

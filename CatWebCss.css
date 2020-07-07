@@ -1,0 +1,195 @@
+.Tel{
+    background-color: #222;
+}
+.TelRow{
+    font-size: 20px;
+    font-family: Lato, sans-serif;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+.Tellogo,.icon{
+    width: 300px;
+}
+.Tellogo{
+    margin-right: 150px;
+}
+.icon{
+    text-align: right;
+    margin-left: 150px;
+}
+.fas{
+    color: #FF8800;
+}
+.tel{
+    color:#fff;
+}
+.icon i{
+    color: #fff;
+}
+.header{
+    display: flex;
+    margin:25px auto;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 2px solid blue; */
+}
+.logo{
+    display: flex;
+}
+.logo a{
+    /* border: 2px solid red; */
+    display: inline-block;
+    text-decoration: none;
+    color:#535353;
+    font-weight: 700;
+    font-size: 50px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+ .menu a{
+    text-decoration: none;
+    color: #000;
+    font-family: 'Lato', sans-serif;
+    margin: auto 10px;
+}
+.Donate{
+    padding: 10px 5px;
+    border: 2px solid #FF8800;
+    font-size: 10px;
+    font-family: 'Lato', sans-serif;
+}
+.Donate a{
+    text-decoration: none;
+    color: #FF8800;
+}
+.Donate:hover{
+    background-color: #6a75f3;
+    border: 2px solid #6a75f3;
+    color:#fff;
+}
+.banner{
+    position: relative;
+}
+.banner img{
+    display: block;
+    width: 100%;
+}
+.bannerText{
+    position: absolute;
+
+}
+.need{
+    font-family:'Lato', sans-serif ;
+    font-weight: 500;
+    font-size: 70px;
+    color:#535353 ;
+}
+.Help{
+    font-family:'Lato', sans-serif ;
+    font-weight: 700;
+    color: #7abee9;
+    font-size: 70px;
+    line-height: 1.1;
+}
+.you{
+    font-family:'Lato', sans-serif ;
+    color: #535353;
+    margin-bottom: 50px;
+}
+.bannerText a{
+    text-decoration: none;
+    color: #FF8800;
+    border: 2px solid #FF8800;
+    background-color: #FF8800;
+    color: #fff;
+    padding: 20px;
+}
+.about{
+    display: flex;
+    margin: 10px;
+    padding: 150px;
+}
+.divpic{
+    width: 50%;
+}
+.divpic img{
+    width: 100%;
+}
+.about .aboutText{
+    /* border: 2px solid red; */
+    width:50%;
+}
+.aboutT{
+    margin-left: 5px;
+    margin-top: 100px;
+}
+.aboutText h2{
+    font-size: 34px;
+    line-height: 1.5;
+}
+.aboutText h3{
+    color: #7abee9;
+    font-family: 'Lato', sans-serif;
+}
+.aboutText .word{
+    margin: 20px auto;
+}
+.aboutText button{
+    border: 2px solid #FF8800;
+    background-color: #FF8800;
+    color: #fff;
+    padding: 20px;
+}
+.help{
+    /* border: 2px solid red; */
+    margin: 10px;
+}
+.help .word{
+    text-align: center;
+}
+.help h2{
+    /* border: 2px solid red; */
+    color: #535353;
+    font-size: 50px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin: 10px;
+}
+.help h3{
+    /* border: 2px solid red; */
+    font-size: 30px;
+    margin-top: 5px;
+    color: #7abee9;;
+}
+.help .helpPic{
+    display: flex;
+    margin: 10px;
+    padding: 150px;
+}
+.help .divpic{
+    margin: 10px;
+    position: relative;
+}
+.help p{
+    display: flex;
+    position: absolute;
+    color: #fff;
+    font-size: 30px;
+    justify-content: center;
+}
+.save{
+
+}
+.events{
+
+}
+.news{
+
+}
+.record{
+
+}
+.ig{
+
+}
