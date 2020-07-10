@@ -1,0 +1,134 @@
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .area {
+    width: 960px;
+    margin: auto;
+  }
+  /* 車子1 */
+  #titlecar1-area {
+    text-align: center;
+  }
+  
+  #titlecar1-area .title {
+    font-size: 30px;
+    margin: 30px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #titlecar1-area  h1.title::after{
+    content: '__';
+    color: #000;
+  }
+  
+  #titlecar1-area .menubar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  #titlecar1-area .menubar a {
+    border: 1px dotted #ccc;
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+    margin: auto;
+    padding: 1px 30px;
+  }
+
+  /*  */
+  .container{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10%;
+  }
+  .container .context{
+    color: #fff;
+    width: 320px;
+    text-align: center;
+    position: relative;
+  }
+  .container .context .title{
+    background-color: #b00;
+    display: flex;
+    left: 0;
+  }
+  .container .context .title h2{
+    background-color: #b00;
+    font-size: 40px;
+    padding: 20px;
+  }
+  .container .context .title span{
+    writing-mode: vertical-rl;
+    font-weight: normal;
+    font-size: 95px;
+    font-family: none;
+  }
+  
+  .container .context .textarea{
+    background-color: #000;
+    line-height: 1.8;
+    padding: 20px 10px;
+    position: absolute;
+  }
+  .container .car{
+    width: 720px;
+    margin-left: 160px;
+  }
+  .container .car img{
+    width: 100%;
+    vertical-align: middle;
+  }
+  .container .txt{
+      background-color: #eee;
+      width: 700px;
+      padding:15px 15px;
+      position: relative;
+      margin-left: 20px;
+      margin-top: -305px;
+      
+  }
+  .container .txt span{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    color: #b00;
+    display: flex;
+    align-items: center;
+  }
+  .container .txt span::after{
+    content: '';
+    width: 20px;
+    height: 5px;
+    background-color: #b00;
+    flex-grow: 1;
+    margin-left: 1em;
+  }
+  .container .txt h3{
+    font-size: 16px;
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+  }
+  .container .txt p{
+    color: #333;
+    line-height: 1.2;
+    font-weight: 600;
+  }
+  .container .gray{
+    width: 450px;
+    height: 200px;
+    background-color: #ccc;
+    position: relative;
+    right: 0;
+    left: 195px;
+    top: -490px;
+    margin: auto;
+    z-index: -1;
+  }
+.container:nth-child(odd) .context{
+  margin-left: auto;
+}
