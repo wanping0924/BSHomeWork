@@ -37,7 +37,7 @@
     width: 60px;
     border-radius: 50%;
     background-color: #2fb0e4;
-    
+    /* border: 2px solid red; */
 }
 #doticon .dot{
     width: 60px;
@@ -77,6 +77,7 @@
     font-size: 60px;
     right: 0;
     bottom: 0;
+    border: 2px solid red;
 }
 #msgicon .fab{
     color: #2fb0e4;
@@ -142,26 +143,27 @@
     transform: translateY(0px) rotateY(45deg);
     background-color: blue;
 } */
-/* #menu-control:checked ~ .hb span:first-child{
+#menu-control:checked ~ .hb span:first-child{
     transform:rotate(45deg);
     background-color: red;
 }
 #menu-control:checked ~ .hb span:last-child{
     transform:rotate(135deg);
     background-color: red;
-} */
+}
 #header-area .container .hbmenu{
     /* width: 200px; */
     /* background-color: green; */
 }
 #header-area .container .hbmenu nav{
-    /* position: fixed; */
+    position: fixed;
     top: 77px;
     right: 10px;
     width: 325px;
     overflow: auto;
-    /* background-color: #fff; */
+    background-color: rgb(70, 104, 179);
     text-align: center;
+    right: 100%;
 }
 
 #header-area .container .hbmenu nav a{
@@ -172,7 +174,10 @@
     display: block;
     padding: 10px 20px;
 }
-
+#header-area .container .hbmenu #menu-control:checked ~ nav{
+    background-color:yellowgreen;
+    right: 10px;
+}
 
 
 
