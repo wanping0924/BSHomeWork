@@ -1,0 +1,182 @@
+/* header */
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+/*平板直*/
+/* @media screen and (min-width:768px){
+
+} */
+/*平板橫*/
+/* @media screen and (min-width:992px){
+
+} */
+/*桌機*/
+/* @media screen and (min-width:1200px){
+
+} */
+/* .view{
+    width: 1200;
+} */
+
+/*手機*/
+
+.area{
+    max-width: 767px;
+    margin-left: 10px;
+    margin-right: 10px;
+} 
+
+/* doticon */
+#doticon{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: #2fb0e4;
+    
+}
+#doticon .dot{
+    width: 60px;
+    display: block;
+    /* border: 1px solid greenyellow; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 29px;
+    
+}
+#doticon span{
+    width:8px;
+    height: 8px;
+    display: block;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    font-weight: 900;
+    border-radius: 50%;
+}
+#doticon span:first-child{
+    transform: translateX(-15px);
+}
+#doticon span:last-child{
+    transform: translateX(15px);
+}
+
+/* msgicon */
+#msgicon{
+    position: fixed;
+    font-size: 60px;
+    right: 0;
+    bottom: 0;
+}
+#msgicon .fab{
+    color: #2fb0e4;
+}
+#header-area{
+    /* background-color: #3dc8eb; */
+}
+#header-area .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+}
+#header-area .container a{
+}
+#header-area .container .logo-area{
+    display: flex;
+    align-items: center;
+}
+#header-area .container .logo-area .bstxt{
+    margin-left: 10px;
+}
+#header-area .container .logo-area .bstxt a{
+    color: #fff;
+    text-decoration: none;
+    font-family: open sans,sans-serif;
+    font-size: 30px;
+}
+#header-area .container .hbmenu .hb{
+    width: 40px;
+    height: 40px;
+    display: block;
+    position: relative;
+    left: 80px;
+}
+#header-area .container .hbmenu .hb span{
+    width: 32px;
+    height: 3px;
+    background-color: #fff;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+#header-area .container label span:first-child{
+    transform: translateY(-10px);
+}
+#header-area .container label span:last-child{
+    transform: translateY(10px);
+}
+/*隱藏checkbox*/
+#header-area .container #menu-control{
+    display: none;
+}
+
+#menu-control:checked ~ .hb span:nth-child(2){
+    display: none;
+}
+/* #menu-control:checked ~ .hb span:first-child{
+    transform: translateY(0px) rotateY(45deg);
+    background-color: blue;
+} */
+/* #menu-control:checked ~ .hb span:first-child{
+    transform:rotate(45deg);
+    background-color: red;
+}
+#menu-control:checked ~ .hb span:last-child{
+    transform:rotate(135deg);
+    background-color: red;
+} */
+#header-area .container .hbmenu{
+    width: 200px;
+    /* background-color: green; */
+}
+#header-area .container .hbmenu nav{
+    /* position: fixed; */
+    top: 77px;
+    right: 10px;
+    width: 325px;
+    overflow: auto;
+    /* background-color: #fff; */
+    text-align: center;
+}
+
+#header-area .container .hbmenu nav a{
+    font-size: 30px;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    color:#444;
+    display: block;
+    padding: 10px 20px;
+}
+
+
+
+
+
+
+
+

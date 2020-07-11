@@ -78,9 +78,19 @@
     width: 720px;
     margin-left: 160px;
   }
-  .container .car img{
+  .container .car .play-icon{
+    position: relative;
+  }
+
+  .container .car >img{
     width: 100%;
     vertical-align: middle;
+  }
+  .container .car .play-icon img{
+    height: 50px;
+    position: absolute;
+    bottom: 195px;
+    right: -39px;
   }
   .container .txt{
       background-color: #eee;
@@ -88,7 +98,7 @@
       padding:15px 15px;
       position: relative;
       margin-left: 20px;
-      margin-top: -305px;
+      margin-top: -228px;
       
   }
   .container .txt span{
@@ -119,13 +129,13 @@
     font-weight: 600;
   }
   .container .gray{
-    width: 450px;
+    width: 445px;
     height: 200px;
     background-color: #ccc;
     position: relative;
     right: 0;
     left: 195px;
-    top: -490px;
+    top: -505px;
     margin: auto;
     z-index: -1;
   }
