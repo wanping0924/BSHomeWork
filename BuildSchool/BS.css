@@ -110,7 +110,7 @@
     height: 40px;
     display: block;
     position: relative;
-    left: 80px;
+    left: 0;
 }
 #header-area .container .hbmenu .hb span{
     width: 32px;
@@ -151,7 +151,7 @@
     background-color: red;
 } */
 #header-area .container .hbmenu{
-    width: 200px;
+    /* width: 200px; */
     /* background-color: green; */
 }
 #header-area .container .hbmenu nav{
