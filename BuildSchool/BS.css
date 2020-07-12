@@ -22,8 +22,8 @@
 
 /*手機*/
 
+
 .area{
-    max-width: 767px;
     margin-left: 10px;
     margin-right: 10px;
 } 
@@ -37,12 +37,11 @@
     width: 60px;
     border-radius: 50%;
     background-color: #2fb0e4;
-    /* border: 2px solid red; */
+    margin-left: 10px;
 }
 #doticon .dot{
     width: 60px;
     display: block;
-    /* border: 1px solid greenyellow; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -77,13 +76,13 @@
     font-size: 60px;
     right: 0;
     bottom: 0;
-    border: 2px solid red;
+    margin-right: 10px;
 }
 #msgicon .fab{
     color: #2fb0e4;
 }
 #header-area{
-    /* background-color: #3dc8eb; */
+    width: 100%;
 }
 #header-area .container{
     display: flex;
@@ -111,6 +110,7 @@
     height: 40px;
     display: block;
     position: relative;
+    z-index: 1;
     left: 0;
 }
 #header-area .container .hbmenu .hb span{
@@ -139,31 +139,26 @@
 #menu-control:checked ~ .hb span:nth-child(2){
     display: none;
 }
-/* #menu-control:checked ~ .hb span:first-child{
-    transform: translateY(0px) rotateY(45deg);
-    background-color: blue;
-} */
 #menu-control:checked ~ .hb span:first-child{
     transform:rotate(45deg);
-    background-color: red;
+    background-color: #000;
 }
 #menu-control:checked ~ .hb span:last-child{
     transform:rotate(135deg);
-    background-color: red;
+    background-color: #000;
 }
-#header-area .container .hbmenu{
-    /* width: 200px; */
-    /* background-color: green; */
+#header-area .container .hbmenu .menu{
+    border: 1px solid yellowgreen;
+    position: fixed;
+    right:-100%;
+    transition:1.5s ;
 }
 #header-area .container .hbmenu nav{
-    position: fixed;
-    top: 77px;
-    right: 10px;
-    width: 325px;
     overflow: auto;
-    background-color: rgb(70, 104, 179);
+    background-color:#fff;
     text-align: center;
-    right: 100%;
+    padding-top: 100px;
+    margin-top: -61px;
 }
 
 #header-area .container .hbmenu nav a{
@@ -172,16 +167,77 @@
     font-family: Arial, Helvetica, sans-serif;
     color:#444;
     display: block;
-    padding: 10px 20px;
+    padding: 20px 20px;
 }
-#header-area .container .hbmenu #menu-control:checked ~ nav{
-    background-color:yellowgreen;
-    right: 10px;
+#header-area .container .hbmenu #menu-control:checked ~ .menu {
+    background-color:#fff;
+    border: 1px solid red;
+    right: 0px;
 }
 
+/* slides幻燈片 */
+.slids{
+    width: 100%;
+}
+.slids img{
+    width: 100%;
+}
 
+/* container */
+.container{
+    border: 1px solid yellowgreen;
+}
+.container .item{ /*共*/
+    padding: 20px 20px 60px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container .item .txt p{
+    font-size: 20px;
+}
+.container .pic{
+    margin: 10px auto;
+}
+.container .idea .pic img{ 
+    width: 50px;
+}
+.container .idea .h3 {
+    font-size: 21px;
+}
+.container .idea h2{
+    font-size: 23px;
+    padding-top: 10px;
+}
+.container .idea .text p{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container .item .title{ /*共*/
+    margin-bottom: 20px;
+}
 
-
-
-
-
+.container .implement .title h2{
+    font-size: 24px;
+    font-weight: bold;
+}
+.container .implement .txt p:nth-child(2){
+    padding-top: 15px;
+}
+.container .hands-on img{
+    width: 100px;
+}
+.container .item .txt h3{/*共*/
+    font-size: 22px;
+}
+.container .item .txt p{ /*共*/
+    padding-top: 15px;
+    
+}
+.container .title h2{/*共*/
+    font-size: 26px;
+}
+.container .training .txt{
+    color: yellowgreen;
+}
