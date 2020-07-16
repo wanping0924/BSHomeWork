@@ -4,7 +4,11 @@
     margin: 0;
     list-style: none;
 }
-
+.row{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap:wrap
+}
 /*平板直*/
 /* @media screen and (min-width:768px){
 
@@ -13,13 +17,154 @@
 /* @media screen and (min-width:992px){
 
 } */
-/*桌機*/
-/* @media screen and (min-width:1200px){
+/*手機*/
+.col-1{width: 8.333333%;}
+.col-2{width: 16.666666%;}
+.col-3{width: 25%;}
+.col-4{width: 33.333333%;}
+.col-5{width: 41.666666%;}
+.col-6{width: 50%;}
+.col-7{width: 58.333333%;}
+.col-8{width: 66.666666%;}
+.col-9{width: 75%;}
+.col-10{width: 83.333333%;}
+.col-11{width: 91.666666%;}
+.col-12{width: 100%;}
 
-} */
-/* .view{
-    width: 1200;
-} */
+@media screen and (max-width:767px){ 
+    #header-area .logo-area .bstxt p a{
+        display:none ;
+    }
+    #header-area .container .hbmenu .hb {
+        width: 40px;
+        height: 40px;
+        display: block;
+        position: relative;
+        z-index: 1;
+        left: 0;
+    }
+    
+    #header-area .container .hbmenu .hb span {
+        width: 32px;
+        height: 3px;
+        background-color: #fff;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    }
+    
+    #header-area .container label span:first-child {
+        transform: translateY(-10px);
+    }
+    
+    #header-area .container label span:last-child {
+        transform: translateY(10px);
+    } 
+    #menu-control:checked~.hb span:nth-child(2) {
+        display: none;
+    }
+    
+    #menu-control:checked~.hb span:first-child {
+        transform: rotate(45deg);
+        background-color: #000;
+    }
+    
+    #menu-control:checked~.hb span:last-child {
+        transform: rotate(135deg);
+        background-color: #000;
+    }
+    
+    #header-area .container .hbmenu .menu {
+        position: fixed;
+        right: -100%;
+        margin-top: -70px;
+        transition: 1.5s;
+        background-color: #fff;
+        width: 70%;
+    }
+    
+    #header-area .container .hbmenu nav {
+        overflow: auto;
+        text-align: center;
+        margin-top: 75px;
+        padding: 10px 20px;
+    
+    }
+    
+    #header-area .container .hbmenu nav a {
+        font-size: 28px;
+        text-decoration: none;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #444;
+        display: block;
+        padding: 20px 20px;
+        border-bottom: 2px solid #666;
+    }
+    
+    #header-area .container .hbmenu #menu-control:checked~.menu {
+        background-color: #fff;
+        right: 0px;
+        margin-top: -70px;
+    }
+} 
+/*桌機*/
+@media screen and (min-width:1200px){
+    .col-xl-1{width: 8.333333%;}
+    .col-xl-2{width: 16.666666%;}
+    .col-xl-3{width: 25%;}
+    .col-xl-4{width: 33.333333%;}
+    .col-xl-5{width: 41.666666%;}
+    .col-xl-6{width: 50%;}
+    .col-xl-7{width: 58.333333%;}
+    .col-xl-8{width: 66.666666%;}
+    .col-xl-9{width: 75%;}
+    .col-xl-10{width: 83.333333%;}
+    .col-xl-11{width: 91.666666%;}
+    .col-xl-12{width: 100%;}
+
+    #header-area .container .logo-area .bstxt a{
+        font-size: 20px;
+    }
+
+    #header-area .container .hbmenu nav a{
+        display: inline-block;
+        text-decoration: none;
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 22px;
+    }
+    .container .itrd{
+        padding: 0 180px;
+    }
+    .container .itrd-pic{
+        padding: 0 40px;
+        box-sizing: border-box;
+    }
+    .container .row .itrd .txt p{
+        text-align: left;
+    }
+    .container .hands-on .row{
+        flex-direction: row-reverse;
+    }
+    .container .influence .row{
+        flex-direction: row-reverse;
+    }
+    .container .month-area{
+        border: 1px solid #ff8800;
+        
+    }
+    .container .month-area .month{
+        margin-top: 0;
+    }
+    
+    .container .itrd .txt p{
+        font-size: 22px;
+    }
+}
 
 /*手機*/
 
@@ -95,7 +240,7 @@
 }
 
 #header-area .container {
-    width: calc(100% - 20px);
+    width: calc(100% - 64px);
     margin-top: 10px;
     display: flex;
     justify-content: space-between;
@@ -104,8 +249,6 @@
     z-index: 2;
     /* background: #aaa; */
 }
-
-#header-area .container a {}
 
 #header-area .container .logo-area {
     display: flex;
@@ -123,35 +266,7 @@
     font-size: 30px;
 }
 
-#header-area .container .hbmenu .hb {
-    width: 40px;
-    height: 40px;
-    display: block;
-    position: relative;
-    z-index: 1;
-    left: 0;
-}
 
-#header-area .container .hbmenu .hb span {
-    width: 32px;
-    height: 3px;
-    background-color: #fff;
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-}
-
-#header-area .container label span:first-child {
-    transform: translateY(-10px);
-}
-
-#header-area .container label span:last-child {
-    transform: translateY(10px);
-}
 
 /*隱藏checkbox*/
 #header-area .container #menu-control {
@@ -171,7 +286,9 @@
     text-align: center;
     margin: auto 15px;
     position: absolute;
-    top: 120px;
+    /* top: 120px; */
+    top: 30%;
+    left: 15%;
     z-index:1;
 }
 #slides .sld .txt{
@@ -189,53 +306,7 @@
     color: #fff;
     
 }
-#menu-control:checked~.hb span:nth-child(2) {
-    display: none;
-}
 
-#menu-control:checked~.hb span:first-child {
-    transform: rotate(45deg);
-    background-color: #000;
-}
-
-#menu-control:checked~.hb span:last-child {
-    transform: rotate(135deg);
-    background-color: #000;
-}
-
-#header-area .container .hbmenu .menu {
-    position: fixed;
-    right: -100%;
-    margin-top: -70px;
-    transition: 1.5s;
-    background-color: #fff;
-    width: 70%;
-}
-
-#header-area .container .hbmenu nav {
-    overflow: auto;
-    
-    text-align: center;
-    margin-top: 75px;
-    padding: 10px 20px;
-
-}
-
-#header-area .container .hbmenu nav a {
-    font-size: 28px;
-    text-decoration: none;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #444;
-    display: block;
-    padding: 20px 20px;
-    border-bottom: 2px solid #666;
-}
-
-#header-area .container .hbmenu #menu-control:checked~.menu {
-    background-color: #fff;
-    right: 0px;
-    margin-top: -70px;
-}
 
 /* slides幻燈片 */
 .slids {
@@ -253,10 +324,12 @@
     padding: 20px 20px 60px;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    
 }
 
 .container .item .txt p {
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .container .pic {
@@ -269,17 +342,17 @@
 }
 
 .container .idea .h3 {
-    font-size: 21px;
+    font-size: 24px;
 }
 
 .container .idea h2 {
-    font-size: 23px;
+    font-size: 26px;
     padding-top: 10px;
 }
 
 .container .idea .text p {
     text-align: left;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 700;
     font-family: Arial, Helvetica, sans-serif;
 }
