@@ -1,0 +1,185 @@
+.container{
+    /* margin-left: 15px;
+    margin-right: 15px; */
+    /* margin: auto; */
+}
+
+/* 導覽列 */
+.navbar{
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color:  rgba(0,0,0,.7);
+}
+.navbar .form-inline a img{
+    width: 18px;
+}
+.navbar ul li a{
+    color: #eee;
+}
+
+/*  taken in taken */
+.container .card{
+    padding: 0 14%;
+}
+.card{ /*共*/
+    border: none;
+} 
+
+/* iframe 影片 */
+.embed-responsive{
+    margin-bottom: 40px;
+}
+
+
+
+
+/* 幻燈片 */
+#carousel-fish .carousel-item{
+    /* height: calc(100vh); /*100vh高度調整到跟視窗一樣*/
+    /* position: relative; */
+}   
+#carousel-fish .txt{
+    right: 0;
+    left: 0;
+    top: 38%;
+    text-align: center;
+    color: #fff;
+}
+#carousel-fish .txt h3{
+    font-size: 25px;
+}
+#carousel-fish .txt h2{
+    font-weight: 700;
+    font-size: 90px;
+    margin-top: 1%;
+    margin-bottom: 8%;
+}
+#carousel-fish .txt a{
+    display: inline-block;
+    font-weight: 700;
+    padding: 5px 30px;
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(0,0,0,.8);
+    border: 1px solid #fff;
+}
+#carousel-fish .txt a:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+/* 產品1 */
+.product-1 .prod1-img{
+    border: 1px solid red;
+}
+.product-1 .prod-info{
+    /* width: 100%; */
+    top: 0;
+    /* top: 25%;*/
+    z-index: -1; 
+}
+.product-1 .prod1-img:hover{
+    background-color: #555;
+}
+.product-1 .prod-info a{
+    text-align: center;
+    color: #000;
+}
+.product-1 .prod-info a:hover{
+    text-decoration: none;
+}
+.product-1 .prod-info span{
+    display: block;
+}
+.product-1 .prod-info span:nth-child(3){
+    color: #5555ff;
+}
+
+
+
+
+/*banner  sticky */
+.banner {
+    width: 100%;
+    height: 75vh;
+    background-image: url(pic/subbnr_01.jpg);
+    background-attachment: fixed;
+}
+.wrap h1{
+    font-size: 120px;
+}
+.wrap p{
+    font-size: 45px;
+}
+
+/* 產品介紹-2 */
+.product-2{
+    font-size: 12px;
+}
+.product-2 img{
+    border-bottom: 1px solid #ccc;
+} 
+.product-2 .btn-cart{
+    right: 0;
+    bottom: 0;
+}
+.product-2 a{
+    color: #000;
+}
+.product-2 a:hover{
+    text-decoration: none;
+    color: #000;
+}
+.product-2 .price{
+    color:#5555ff
+}
+
+/* 資訊欄 */
+footer{
+    margin-top: 5%;
+    background: #444;
+}
+footer .row:first-child{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+footer a{
+    color: #888;
+}
+footer a:hover{
+    text-decoration: none;
+    color: #888;
+}
+footer h3{
+    font-size: 16px;
+    color: #D5D5D5;
+}
+footer .txt p{
+    font-size: 14px;
+    line-height: 0.2rems;
+    color: #888;
+}
+footer .icon{
+    margin-bottom:50%;
+}
+/* 最下方 */
+.date-area{
+    background: #222;
+}
+.date-area .date{
+    padding: 10px 0;
+}
+.date-area .right-menu{
+    color: #888;
+}
+.date-area a{
+    color: #888;
+    display: inline-block;
+    margin-right: 5px;
+}
+.date-area a:hover{
+    text-decoration: none;
+    color: #888;
+}
