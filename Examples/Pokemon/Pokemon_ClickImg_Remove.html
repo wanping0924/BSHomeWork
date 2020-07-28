@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>寶可夢圖鑑列表</h1>
+    <button id='addone' onclick="AddPokemon()">Click +1</button>
+    <button id='removeone' onclick="removePokemon()">Clear -1</button>
+    <button id='loadall' onclick="allPokemon()">Load All</button>
+
+    <div id='container'></div>
+
+    <script>
+        var index = 1; //代表圖片索引
+
+        var container = document.getElementById('container');
+
+        //Window載入時,執行appendPokemon()方法,新增一張圖片
+        window.onload = appendPokemon();
+
+        //window.onload時，象徵性相入一張圖片
+        function appendPokemon() {
+            //1.Create <img> element
+            let img = document.createElement('img');
+            //2.set img's src=''
+            img.setAttribute('src', 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png');
+
+            //3.替每張<img>加上data-index索引值，用於後續click後自DOM中移除的索引參考
+            // img.setAttribute('data-index', index);
+
+            // //4.替每張<img>用addEventListener加上click事件
+            img.addEventListener('click', removeImg);
+
+            //5. add <img> into <div>
+            container.appendChild(img);
+
+            index++;
+        }
+
+        //Window載入時,執行appendPokemon()方法,新增一張圖片(使用Template Literal)
+        function appendPokemonByTemplate() {
+            let fileName = '001';
+            let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+            let pokemonImg = `<img src='${pathFile}' />`;
+
+            container.innerHTML = pokemonImg;
+
+            index++;
+        }
+
+        //按下Button按鈕後+1張圖片
+        function AddPokemon() {
+            //1.Create <img> element
+            let img = document.createElement('img');
+            //2.set img's src=''
+            let no = index.toString().padStart(3, '0');
+            img.setAttribute('src', `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${no}.png`);
+
+            img.setAttribute('id',no);
+            img.addEventListener('click', removeImg);
+
+            //3. add <img> into <div>
+            container.appendChild(img);
+
+            index++;
+        }
+
+        //按下Button按鈕後-1張圖片
+        function removePokemon() {
+            var len = container.childNodes.length;
+            if (len > 0) {
+                container.removeChild(container.childNodes[len - 1]);
+                index > 1 ? index-- : index;
+            }
+        }
+
+        //一次載入所有的Pokemon圖片
+        function allPokemon(){
+
+            for (let i = 1; i < 890; i++) {
+                let fileName = i.toString().padStart(3, '0');
+                let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                
+                //建立<img src=''>元素
+                let img = document.createElement('img');
+                img.setAttribute('src', pathFile);
+
+                img.addEventListener('click', removeImg);
+                //加入DOM元素
+                container.appendChild(img);
+
+                index++;
+            }
+        }
+
+        //Click圖片後，根據圖片data-index索引值移除<img>
+        function removeImg(event){
+            // alert('你觸發了click移除事件');
+
+            // console.log(event.type);
+            // console.log(event.target);
+            // console.log(event.target.id);
+            // console.log(document.getElementById(event.target.id));
+            // debugger;
+            //自DOM中container容器移除
+            container.removeChild(event.target);
+
+            index--;
+        }
+    </script>
+</body>
+
+</html>

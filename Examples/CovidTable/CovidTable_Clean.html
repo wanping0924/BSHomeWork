@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body td{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>國家</td>
+                <td>確診</td>
+                <td>死亡</td>
+                <td>治癒</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>台灣</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>中國</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>美國</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <ul>
+        <li>CSS</li>
+        <li>HTML</li>
+        <li>JavaScript</li>
+    </ul>
+    <script>
+        //建立Virus資料，傳入Table中
+         // var Virus ={
+        //     Taiwan:[{ Country:"台灣",Confirm:455,Recovery:440,Death:7 }],
+        //     American:[{ Country:"美國",Confirm:3970000,Recovery:1160000,Death:14400 }],
+        //     Brazil:[{ Country:"巴西",Confirm:2170000,Recovery:1470000,Death:81597}],
+        // }
+        //建立肺炎資料結構
+        var Virus = [
+            { Country:"台灣",Confirm:455,Recovery:440,Death:7 },
+            { Country:"美國",Confirm:3970000,Recovery:1160000,Death:14400 },
+            { Country:"巴西",Confirm:2170000,Recovery:1470000,Death:81597},
+            { Country:"全球統計",Confirm:6140455,Recovery:2630440,Death:225604}
+        ]
+        console.log(Virus[0].Confirm);
+        //取得html元素 以以innerText或innerHTML設定(塞入)資料 
+        //計算[全球統計數]
+        let confirm = document.querySelectorAll("tbody tr td:nth-child(2)");
+        let recovery = document.querySelectorAll("tbody tr td:nth-child(3)");
+        let death = document.querySelectorAll("tbody tr td:nth-child(4)");
+
+        for(let i =0; i < Virus.length; i++){
+            confirm[i].innerText = Virus[i].Confirm;
+            recovery[i].innerText = Virus[i].Recovery;
+            death[i].innerText = Virus[i].Death;
+        }
+        // confirm.innerText = Virus.Taiwan.Confirm;
+
+
+
+        //全球肺炎統計表
+        // querySelector回傳第一個符合selector規則的Element元素
+        let title = document.querySelector("h1");
+        title.innerText= "全球肺炎統計表";
+        //回傳符合Selector規則的NodeList
+        // let language = document.querySelectorAll("ul li");
+        // console.log(language);
+
+        // document.querySelector("table tbody");
+    </script>
+</body>
+
+</html>

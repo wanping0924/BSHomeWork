@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>寶可夢圖鑑列表</h1>
+    <div id='container'></div>
+
+    <button onclick='fetchPokemon()'>載入寶可夢圖鑑列表</button>
+    <button onclick='fetchPokemon_appendChild()'>載入寶可夢圖鑑列表appendChild()</button>
+    <script>
+        var container = document.getElementById('container');
+
+        window.onload = appendPokemon();
+
+        function appendPokemon() {
+            let img = document.createElement('img');
+            img.setAttribute('src', 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png');
+            container.appendChild(img);
+        }
+
+        //利用Element.innerHTML設定HTML字串
+        function fetchPokemon() {
+            let fileName = '001';
+            let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+            let pokemonImg = `<img src='${pathFile}' />`;
+            let pokemons = '';
+            for (let i = 1; i < 890; i++) {
+                fileName = i.toString().padStart(3, '0');
+                pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                pokemonImg = `<img src='${pathFile}' />`;
+                pokemons += pokemonImg;
+                // debugger;
+            }
+
+            container.innerHTML = pokemons;
+        }
+
+
+
+        //新增DOM元素
+        function fetchPokemon_appendChild() {
+            //移除DOM元素
+            container.removeChild(container.childNodes[0])
+
+            let fileName = '001';
+            let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+            let pokemonImg = `<img src='${pathFile}' />`;
+            let pokemons = '';
+            for (let i = 1; i < 890; i++) {
+                fileName = i.toString().padStart(3, '0');
+                pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+
+                //建立<img src=''>元素
+                let img = document.createElement('img');
+                img.setAttribute('src', pathFile);
+
+                //加入DOM元素
+                container.appendChild(img);
+            }
+        }
+    </script>
+</body>
+
+</html>

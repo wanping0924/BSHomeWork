@@ -1,0 +1,19 @@
+.container .item{
+    /* border: 1px solid grey; */
+}
+
+
+.container .colorimg{
+    
+    
+}
+.container .icon .fas{
+    font-size: 55px;
+}
+/* .container .icon .fas{
+    border: 1px solid gray;
+    border-radius: 50%;
+} */
+.container .item{
+    padding: 10px 0;
+}

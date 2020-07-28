@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Pokemon寶可夢圖鑑</h1>
+
+    <div id="container">
+
+    </div>
+
+    <button onclick="fetchPokemon()">載入寶可夢圖鑑</button>
+    <script>
+        var container = document.getElementById("container");
+        function fetchPokemon() {
+            let fileName = '001';
+            let pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+            let pokemonImg = `<img src='${pathFile}' />`;
+
+            let pokemons = '';
+            for (let i = 1; i < 890; i++) {
+                fileName = i.toString().padStart(3, '0');
+                pathFile = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${fileName}.png`;
+                pokemonImg = `<img src='${pathFile}' />`;
+                pokemons += pokemonImg;
+                // debugger;
+            }
+            container.innerHTML = pokemons;
+        } 
+    </script>
+</body>
+</html>

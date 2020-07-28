@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type=text] {
+            padding: 12px 20px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        canvas {
+            /*prevent interaction with the canvas*/
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body onload="createCaptcha()">
+    <form onsubmit="validateCaptcha()">
+        <div id="container">
+        </div>
+        <input type="text" placeholder="Captcha" id="cpatchaText" />
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        var captchaCode='';
+        function createCaptcha() {
+            //清除innerHTML
+            document.getElementById('container').innerHTML = "";
+            //字元庫
+            let charsPattern = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%^&*";
+
+            //建立長度為6的captcha陣列，
+            let captcha = [];
+            for (let i = 0; i < 6; i++) {
+                //用亂數從charsArray中取字元
+                let index = Math.floor(Math.random() * charsPattern.length + 1); 
+                if (captcha.indexOf(charsPattern[index]) == -1) {
+                    captcha.push(charsPattern[index]);
+                } else {
+                    i--;
+                }
+            }
+
+            //將captcha儲存captchaCode全域變數
+            captchaCode = captcha.join("");
+
+            drawCaptcha(captchaCode);
+        }
+
+        //在<Canvas>中繪製captcha
+        function drawCaptcha(codeString){
+            var canv = document.createElement("canvas");
+            canv.id = "captcha";
+            canv.width = 150;
+            canv.height = 50;
+            var ctx = canv.getContext("2d");
+            ctx.font = "25px Georgia";
+            ctx.strokeText(captchaCode, 0, 30);
+            document.getElementById("container").appendChild(canv); // adds the canvas to the body element
+        }
+
+        function validateCaptcha() {
+            event.preventDefault();
+            if (document.getElementById("cpatchaText").value == captchaCode) {
+                alert("有效的Captcha");
+            } else {
+                alert("無效的Captcha，請再試一遍!");
+                createCaptcha();
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        const fullCharCode = (name) => {
+            if (typeof(name)!=="string" || nameArray.length == 0) {
+                document.write("傳入參數型態不合法或空白");
+
+                return;
+            }
+
+            var nameArray = name.split('');
+
+            let codeArray = [];
+            for (let i = 0; i < nameArray.length; i++) {
+                for (let j = 0; j < 65536; j++) {
+                    if (nameArray[i] == String.fromCharCode(j)) {
+                        codeArray.push(j);
+                        console.log(j);
+                    }
+                }
+                // debugger;
+            }
+        }
+
+        fullCharCode(true);
+    </script>
+</body>
+
+</html>
