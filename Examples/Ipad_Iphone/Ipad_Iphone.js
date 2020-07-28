@@ -11,8 +11,8 @@ var Product = {
             {Memory:"128GB",Price:"NT$13,900起"},
         ],
         Connection:[
-            {Wifi:"Wi-Fi",Price:"NT$10,900起"},
-            {Wifi:"Wi-Fi+行動網路",Price:"NT$15,400起"},
+            {Wifi:"Wi-Fi",Price:"NT$10,900起",ThirytwoP:"NT$10,900",OneTwentyEight:"NT$15,400"},
+            {Wifi:"Wi-Fi+行動網路",Price:"NT$15,400起",ThirytwoP:"NT$13,900",OneTwentyEight:"NT$18,400"},
         ]
     },
     Iphone:{
@@ -35,7 +35,7 @@ var Product = {
 
 
 //先找到要加入的位置
-var body = document.getElementsByTagName("body")[0];
+// var body = document.getElementsByTagName("body")[0];
 
 //加入 ipad storage
 let storage = document.querySelectorAll(".storage");
@@ -64,7 +64,7 @@ var $getbyId = function(idName){
 
 let  prod_choice_div = $getbyId("product-choice")
 let product_img = document.querySelector("#product-img img");
-let color_div = document.querySelectorAll(".color");
+// let color_div = document.querySelectorAll(".color");
 
 
 //建立新的元素
@@ -122,15 +122,19 @@ btn_ipad.addEventListener('click',function(){
 let calcPrice_h2 = document.querySelector(".calcPrice h2");
 calcPrice_h2.innerText = "NT$10,900 起";
 
+
+let wifi_p = document.querySelector(".wifi p");
+let wifiMobile_p = document.querySelector(".wifiMobile p");
 //點選儲存裝置連動checkbox
-let thirty_two_div = document.querySelector(".twentyTwoGB");
+let thirty_two_div = document.querySelector(".thirtyTwoGB");
 thirty_two_div.addEventListener('click',function(){
     let check =  document.getElementById("twentyTwoCheck");
-    if(check.checked){//若checkbox有勾選
-        check.checked = false;//就取消
-    }else{//沒勾選
-        check.checked = true;//就打勾
-    }
+    // if(check.checked){//若checkbox有勾選
+        // check.checked = false;//就取消
+        // check.checked = true;//就打勾
+        wifi_p.innerText = Product.Ipad.Connection[0].ThirytwoP;
+        wifiMobile_p.innerText = Product.Ipad.Connection[0].OneTwentyEight;
+    // }
 });
 let oneTwenty_eight_div = document.querySelector(".oneTwentyEightGB");
 oneTwenty_eight_div.addEventListener('click',function(){
@@ -139,6 +143,8 @@ oneTwenty_eight_div.addEventListener('click',function(){
         check.checked = false;//就取消
     }else{//沒勾選
         check.checked = true;//就打勾
+        wifi_p.innerText = Product.Ipad.Connection[1].ThirytwoP;
+        wifiMobile_p.innerText = Product.Ipad.Connection[1].OneTwentyEight;
     }
 });
 
@@ -150,6 +156,9 @@ wifi_div.addEventListener('click',function(){
         check.checked = false;//就取消
     }else{//沒勾選
         check.checked = true;//就打勾
+        //價格試算
+        let price = wifi_p.textContent;
+        calcPrice_h2.innerText = price;
     }
 });
 let wifiMobile_div = document.querySelector(".wifiMobile");
@@ -159,8 +168,11 @@ wifiMobile_div.addEventListener('click',function(){
         check.checked = false;//就取消
     }else{//沒勾選
         check.checked = true;//就打勾
+        //價格試算
+        let price = wifiMobile_p.textContent;
+        calcPrice_h2.innerText = price;
     }
 });
 
-//計算價格
+
 
