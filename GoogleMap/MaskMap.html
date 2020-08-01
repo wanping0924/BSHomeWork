@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://kit.fontawesome.com/05c128ff7b.js" crossorigin="anonymous"></script>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+        #map {
+            height: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="choice-area">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="town">
+
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                
+            </div>
+        </div>
+        
+    </div>
+    <div id="map"></div>
+    <script>
+        let url = "https://raw.githubusercontent.com/wanping0924/FileStorage/master/MaskMap.json"
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // console.log(xhr.responseText);
+                let MaskObject = JSON.parse(this.responseText);
+                // console.log(MaskObject);
+                // eqfeed_callback(MaskObject);
+                eqfeed_callback(MaskObject);
+            }
+        }
+        xhr.open("Get", url);
+        xhr.send();
+
+        var map;
+        var a =-1;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 8,
+                center: {
+                    lat: 24,
+                    lng: 122
+                }
+            });
+        }
+
+        window.eqfeed_callback = function (MaskObj) { //MaskObj.features.length
+            for (var i = 0; i < MaskObj.features.length; i++) {
+                let coords = MaskObj.features[i].geometry.coordinates;
+                let latLng = new google.maps.LatLng(coords[1], coords[0]);
+                let maskQuantity = MaskObj.features[i].properties;
+                //加入圖釘
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map,
+                    icon: maskicon(maskQuantity)
+                    //https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png
+                });
+                attachSecretMessage(marker, MaskObj);
+            }
+
+            function maskicon(maskQ) {
+                if (maskQ.masksLeft > 0 || maskQ.childMasksLeft > 0) {
+                    return "http://maps.google.com/mapfiles/kml/paddle/blu-stars.png"
+                } else {
+                    return "http://maps.google.com/mapfiles/kml/paddle/X.png"
+                }
+            }
+
+            function attachSecretMessage(marker, MaskDataObj) {
+                let clinic = MaskDataObj.features[i].properties.name;
+                let mask = MaskDataObj.features[i].properties.masksLeft;
+                let childMask = MaskDataObj.features[i].properties.childMasksLeft;
+                // console.log(clinic, mask, childMask);
+                //有口罩
+                // if (mask > 0 || childMask > 0) {
+                    const infowindow = new google.maps.InfoWindow({
+                        content: `<div><h2>地點: ${clinic}</h2>
+                        <h3>成人口罩:${mask}個</h3>
+                        <h3>小孩口罩${childMask}個</h3></div>`
+                    });
+
+                // }
+                marker.addListener("click", () => {
+                    // a = a * -1;
+                    // if (a > 0) {
+                        infowindow.open(marker.get("map"), marker);
+                    // } else {
+                    //     infowindow.close();
+                    // }
+
+                });
+            }
+        }
+    </script>
+    <script defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlKWP4uWjQIR3WDAWLAu6rUhBfc3_ppag&callback=initMap">
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

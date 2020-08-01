@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>1A2B</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="input-group mb-3 mt-3">
+                    <div class="input-group-prepend mx-auto">
+                        <button type="button" id="startBtn" class="btn btn-outline-light bg-secondary text-light rounded mx-2 py-3"
+                            style="width: 300px;">開始遊戲</button>
+                        <button type="button" id="resetBtn" class="btn btn-outline-light bg-secondary text-light  rounded mx-2 py-3"
+                            style="width: 300px;">重新遊戲</button>
+                        <button type="button" id="showAnswerBtn" class="btn btn-outline-light bg-secondary text-light  rounded mx-2 py-3"
+                            style="width: 300px;">查看答案</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 放答案 -->
+            <!-- <input type="text" id="input_num" value=""> -->
+        </div>
+        <div class="col-12">
+            <div class="text-center mb-3 ">
+                <h1>遊戲紀錄</h1>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="game_record">
+                <ul class="list-group h2 mb-3">
+                    <!-- 放紀錄 -->
+                    <!-- <li class="list-group-item border  mb-3">
+                        <span>1234 : </span>
+                        <span class="badge badge-danger">1A2B</span>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="guess w-100">
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-primary text-light px-5 rounded-left" style="width: 150px;"
+                                >猜答案</span>
+                        </div>
+                        <input type="text" id="userInput" class="form-control" aria-label="guess_answer"
+                            aria-describedby="inputGroup-sizing-default" placeholder="請輸入不重覆四位數字">
+                        <div class="input-group-append">
+                            <button type="button" id="guessBtn" class="btn btn-outline-light bg-dark text-light  rounded-right"
+                                style="width: 150px;">猜</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="1A2B.js"></script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

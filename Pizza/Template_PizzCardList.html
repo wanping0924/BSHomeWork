@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <title>Hello, world!</title>
+    <style>
+        .card {
+            border: 1px solid black;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .headshot {
+            overflow: hidden;
+        }
+
+        .card-title {
+            color: white;
+            background-color: black;
+            display: inline-block;
+            border-radius: 5px;
+            padding: 5px 15px 5px 15px;
+        }
+
+        .card-body {
+            background-color: #ffbf67;
+        }
+
+        .card:hover {
+            box-shadow: 8px 8px 15px #808080;
+            transform: translate(5px, 5px);
+        }
+
+        .card:hover img {
+            transform: scale(1.2);
+            transition: transform 0.5s;
+        }
+
+        .card:not(:hover) img {
+            transform: scale(1, 1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-body {
+            background-color: lightgreen !important;
+        }
+
+        .card:hover .card-title {
+            color: black;
+            background-color: white !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class='container-fluid'>
+        <div class='jumbotron'>Pizza Template</div>
+        <div class='row'>
+        </div>
+    </div>
+
+    <template id='cardPizza'>
+        <div class="card" style="width: 18rem;">
+            <img src="" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <p class="L_price"></p>
+                <p class="S_price"></p>
+                <button href="#" class="btn btn-primary">立即訂購</a>
+            </div>
+        </div>
+    </template>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="pizzaImage">
+                    <h1 id="description" class="text-primary"></h1>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <img src="Pic_PizzaList/asset 2.png" alt=""> -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+
+
+    <script type='module'>
+        import { $g } from '../Modules/helpers.js';
+
+        let url = "https://raw.githubusercontent.com/wanping0924/FileStorage/master/Pizza.json";
+        let row = $g('.row');
+        
+        //PizzaList Cart Template製作
+        window.onload = function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    // console.log(xhr.responseText);
+                    let PizzaObject = JSON.parse(xhr.responseText);
+                    
+                    addPizza(PizzaObject);
+                }
+            }
+            xhr.open("Get",url);
+            xhr.send();
+
+
+            function addPizza(PizzaArray){
+                // console.log(PizzaArray);
+                //取得樣板
+                let card = $g("#cardPizza");
+                //item是陣列裡面的值(第0,1,2...筆資料)
+                PizzaArray.pizza_menu.forEach(function(item,index){
+                    let cloneContent = card.content.cloneNode(true);//複製節點(移走)
+                    cloneContent.querySelector("img").src = item.picture;
+                    cloneContent.querySelector("h5").innerText = item.name;
+                    cloneContent.querySelector("p").innerText = item.english_Name;
+                    cloneContent.querySelector(".L_price").innerText = item.l_price;
+                    cloneContent.querySelector(".S_price").innerText = item.s_price;
+                    
+                    // console.log(item.picture);
+                    //連動modal
+                    cloneContent.querySelector(".btn").addEventListener("click",function(){
+                        this.setAttribute("data-toggle","modal");
+                        this.setAttribute("data-target","#exampleModal");
+                        let modal = $g("#exampleModal");
+                        modal.querySelector("h5").innerText = item.name;
+                        //modal.querySelector(".modal-body").innerHTML = "<h1>炭火肉食披薩</h1>"
+                        modal.querySelector("#pizzaImage").src = item.picture;
+                        modal.querySelector("#description").innerText = item.description;
+                        
+                    });
+                    
+                    row.append(cloneContent);
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
