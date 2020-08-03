@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <style>
+            /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+            #map {
+                width: 100%;
+                height: 100%;
+            }
+
+            /* Optional: Makes the sample page fill the window. */
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <h3>Face Mask Map</h3>
+        <!-- The div element for the map -->
+        <div id="map"></div>
+        <div id="name">藥局店名:</div>
+        <div id="masksLeft">成人口罩剩餘數量:</div>
+        <div id="childMasksLeft">兒童口罩剩餘數量:</div>
+        <script>
+            //定位一開始地圖的位置   
+            var map;
+
+            function initMap() {
+                // The location of Uluru
+                var place = {
+                    lat: 24,
+                    lng: 122
+                };
+                // The map, centered at Uluru
+                map = new google.maps.Map(
+                    document.getElementById('map'), {
+                        zoom: 8,
+                        center: place
+                    });
+            }
+        </script>
+
+        <script type="module">
+            //HTML程式以XMLHttpRequest呼叫GitHub - FileStorage / Facemask.json
+        import { $g } from '../Modules/helpers.js';
+        let row = $g('.row');
+        const url = "https://raw.githubusercontent.com/zo334411/FileStorage/master/Facemask.json";
+
+        //用JSON.parse將Facemask.json解析成JavaScript物件
+        let FacemaskObject;
+        let xhr = new XMLHttpRequest();
+        xhr.onload = function () {
+            FacemaskObject = JSON.parse(this.responseText);
+            eqfeed_callback(FacemaskObject)
+        }
+        // console.log(FacemaskObject);
+        xhr.open('GET', url);
+        xhr.send();
+
+        // FacemaskObject.features.length
+        var icon1 = 'https://api.iconify.design/twemoji:cat-with-wry-smile.svg';
+        var icon2 = 'https://api.iconify.design/emojione-v1:crying-cat-face.svg';
+        var marker;
+        function eqfeed_callback(FacemaskObject) {
+            for (let i = 0; i < FacemaskObject.features.length; i++) {
+                let coords = FacemaskObject.features[i].geometry.coordinates;
+                // let latLng = new google.maps.LatLng(coords[1], coords[0]);
+                // let id = FacemaskObject.features[i].properties.id
+                // let name = FacemaskObject.features[i].properties.name
+                // let masksLeft = FacemaskObject.features[i].properties.masksLeft
+                // let childMasksLeft = FacemaskObject.features[i].properties.childMasksLeft
+
+                console.log(coords[1],coords[0])
+                let latLng = new google.maps.LatLng(coords[1], coords[0]);
+                console.log(latLng)
+                
+                // if (FacemaskObject.features[i].properties.masksLeft == 0 && FacemaskObject.features[i].properties.childMasksLeft == 0) {
+                    marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map,
+                        icon: icon2,
+                        title: '藥局名稱:' + FacemaskObject.features[i].properties.name
+                    });
+                    // aa(marker,FacemaskObject)
+                    // let contentString = '<div id="name">' + '醫院名稱:' + '</div>' + '<div id="masksLeft">' + '成人口罩剩餘數量: ' + '</div>' + '<div id="childMasksLeft">' + '兒童口罩剩餘數量:' + '</div>';
+                    // const infowindow = new google.maps.InfoWindow({
+                    //     content: contentString
+                    // });
+                    // marker.addListener("click", () => {
+                    //     infowindow.open(marker.get("map"), marker);
+                    //     console.log(marker.position)
+                    //     });
+                    // }
+                // }
+                // else {
+                //     marker = new google.maps.Marker({
+                //         position: latLng,
+                //         map: map,
+                //         icon: icon1,
+                //         title: '藥局名稱:' + FacemaskObject.features[i].properties.name
+                //     });
+                //     // aa(marker,FacemaskObject)
+                // }
+                attachSecretMessage(marker,FacemaskObject)
+            }
+            function attachSecretMessage(marker,Facemask){
+                // let id = FacemaskObject.features[i].properties.id;
+                // let name = FacemaskObject.features[i].properties.name
+                // let masksLeft = FacemaskObject.features[i].properties.masksLeft
+                // let childMasksLeft = FacemaskObject.features[i].properties.childMasksLeft
+                // let contentString = '<div id="name">'  + '醫院名稱:'+ name+ '</div>' + '<div id="masksLeft">' + '成人口罩剩餘數量: '+masksLeft + '</div>' + '<div id="childMasksLeft">' + '兒童口罩剩餘數量:' +childMasksLeft+ '</div>';
+                let contentString = '<div id="name">'  + '醫院名稱:'+ '</div>' + '<div id="masksLeft">' + '成人口罩剩餘數量: ' + '</div>' + '<div id="childMasksLeft">' + '兒童口罩剩餘數量:' + '</div>';
+                const infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+            marker.addListener("click", () => {
+                infowindow.open(marker.get("map"), marker);
+                console.log(marker.position)
+                });
+            }
+        }
+
+
+
+    </script>
+
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBb_xbsFQ3kJgm-3d5EzG539sC50ldO88w&callback=initMap&libraries=&v=weekly"
+            defer></script>
+    </body>
+
+    </html>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

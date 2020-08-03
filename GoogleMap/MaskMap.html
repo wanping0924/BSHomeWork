@@ -71,6 +71,7 @@
 
         window.eqfeed_callback = function (MaskObj) { //MaskObj.features.length
             for (var i = 0; i < MaskObj.features.length; i++) {
+                let clinic = MaskObj.features[i].properties.name;
                 let coords = MaskObj.features[i].geometry.coordinates;
                 let latLng = new google.maps.LatLng(coords[1], coords[0]);
                 let maskQuantity = MaskObj.features[i].properties;
@@ -78,12 +79,13 @@
                 var marker = new google.maps.Marker({
                     position: latLng,
                     map: map,
-                    icon: maskicon(maskQuantity)
+                    icon: maskicon(maskQuantity),
+                    title:"醫院名稱: "+clinic
                     //https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png
                 });
                 attachSecretMessage(marker, MaskObj);
             }
-
+            //口罩數量換圖
             function maskicon(maskQ) {
                 if (maskQ.masksLeft > 0 || maskQ.childMasksLeft > 0) {
                     return "http://maps.google.com/mapfiles/kml/paddle/blu-stars.png"
