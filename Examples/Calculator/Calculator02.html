@@ -54,7 +54,7 @@
 
         .equal-sign {
             height: 98%;
-            grid-area: 2 / 4 / 6 / 5;
+            grid-area: 5 / 3 / 6/ 5;
         }
 
         .calculator-keys {
@@ -85,27 +85,31 @@
                 onclick="insertNum(this)">8</button>
             <button type="button" value="9" class="btn btn-primary waves-effect" id="9"
                 onclick="insertNum(this)">9</button>
-
+            <button type="button" class="operator btn btn-warning" value="<-" id="back"
+                onclick="back(this)"><-</button>
             <button type="button" value="4" class="btn btn-primary waves-effect" id="4"
                 onclick="insertNum(this)">4</button>
             <button type="button" value="5" class="btn btn-primary waves-effect" id="5"
                 onclick="insertNum(this)">5</button>
             <button type="button" value="6" class="btn btn-primary waves-effect" id="6"
                 onclick="insertNum(this)">6</button>
-
+            <button type="button" class="all-clear function btn btn-danger btn-sm" value="cleartotIpu" id="cleartot"
+                onclick="clearAll(this)">AC</button>
+            
             <button type="button" value="1" class="btn btn-primary waves-effect" id="1"
                 onclick="insertNum(this)">1</button>
             <button type="button" value="2" class="btn btn-primary waves-effect" id="2"
                 onclick="insertNum(this)">2</button>
             <button type="button" value="3" class="btn btn-primary waves-effect" id="3"
                 onclick="insertNum(this)">3</button>
-
+                <button type="button" class="all-clear function btn btn-danger btn-sm" value="all-clear"  id="clear"
+                onclick="clearAll(this)">C</button>
             <button type="button" value="0" class="btn btn-primary waves-effect" id="0"
                 onclick="insertNum(this)">0</button>
             <button type="button" class="decimal function btn btn-secondary" value="." id="."
                 onclick="insertDot(this)">.</button>
-            <button type="button" class="all-clear function btn btn-danger btn-sm" value="all-clear" id="clear"
-                onclick="clearAll()">AC</button>
+            <!-- <button type="button" class="all-clear function btn btn-danger btn-sm" value="all-clear" id="clear"
+                onclick="clearAll()">AC</button> -->
             <button type="button" class="equal-sign operator btn btn-success" value="=" id="="
                 onclick="TotalResult()">=</button>
         </div>

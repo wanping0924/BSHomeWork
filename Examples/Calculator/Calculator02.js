@@ -4,7 +4,8 @@ let total = document.querySelector(".total");//下面
 
 let numValue = "";
 let result = "";
-let op=true;//預設運算子狀態 運算子狀態true才可加入運算子 為了不重覆輸入運算子
+let op = true;//預設運算子狀態 運算子狀態true才可加入運算子 為了不重覆輸入運算子
+let dotDefault = true;
 let totalSum = 0;
 
 //數字寫在同一個function
@@ -12,37 +13,37 @@ function insertNum(number) {
     numValue += number.value;
     total.value = numValue;
     op = true;//有了數字後true才可以加入運算子
-    if( calcProcess.value.indexOf("=") == -1){
+    if (calcProcess.value.indexOf("=") == -1) {
 
-    }else{
-        calcProcess.value="";
+    } else {
+        calcProcess.value = "";
     }
 }
 
 //+ - * / 運算子寫在同一個function
 function AddCounter(operator) {
     //未找到= 回傳-1 運算子狀態true才可加入運算子
-    if (numValue!="" && calcProcess.value.indexOf("=") == -1 && op == true) {        
+    if (numValue != "" && calcProcess.value.indexOf("=") == -1 && op == true) {
         numValue += operator.value;
         calcProcess.value += numValue;//按了運算符號後要儲存到上面input
         total.value = "";
         numValue = "";
         op = false;//狀態false 則不可以再加入 為了不重覆輸入運算子
-    } else if(numValue!="" &&op == true){//(判斷若按下=結算後，要再做運算)
+    } else if (numValue != "" && op == true) {//(判斷若按下=結算後，要再做運算)
         numValue += operator.value;
-        calcProcess.value="";
-        total.value=(numValue);
+        calcProcess.value = "";
+        total.value = (numValue);
         op = false;
-    }else{//為了不重覆輸入運算子
+    } else {//為了不重覆輸入運算子
         alert("請輸入數字")
         return;
     }
-    
+
 }
 
 //按下=
 function TotalResult() {
-    if(numValue!=""){
+    if (numValue != "") {
         let equalValue = document.querySelector(".equal-sign").value;
         let sum = calcProcess.value + numValue;//+equalValue
         // calcProcess.value = sum
@@ -52,13 +53,13 @@ function TotalResult() {
         total.value = result;
         calcProcess.value = sum + equalValue;
         numValue = "";
-        numValue=result;
+        numValue = result;
         op = true;
-    }else{
+    } else {
         alert("請輸入數字")
         return;
     }
-    
+
 }
 
 //按0
@@ -71,17 +72,41 @@ function TotalResult() {
 function insertDot(Dot) {
     let dot = Dot.value;
     //沒輸入數字先按. 前面+0
-    if (total.value == "") {
-        numValue += (0 + dot)//"0."
-        total.value = numValue
-    } else {
-        numValue += dot
-        total.value = numValue;
+    if (dotDefault == true) {
+        if (total.value == "") {
+            numValue += (0 + dot)//"0."
+            total.value = numValue
+        } else {
+            numValue += dot
+            total.value = numValue;
+        }
+    }else{
+        return
     }
+    dotDefault = false
 }
-//AC 清除輸入框
-function clearAll() {
-    calcProcess.value = "";
-    total.value = "";
-    numValue = "";
+//清除輸入框
+function clearAll(element) {
+    console.log(element)
+    //C
+    if (element.value == "all-clear") {
+        calcProcess.value = "";
+        total.value = "";
+        numValue = "";
+    } else {//AC
+        total.value = "";
+        numValue = "";
+    }
+    dotDefault = true
+}
+//back鍵
+function back(){
+    let numAry = total.value.split('');
+    numAry.splice(-1,1);
+    let backNum = numAry.join('');//字串陣列連接
+    total.value ="";
+    numValue="";
+    numValue+=backNum
+    total.value+=backNum;
+
 }
