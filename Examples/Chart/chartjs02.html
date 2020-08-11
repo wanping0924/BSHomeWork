@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
+        integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+        <style>
+            #error{
+                position: relative;
+            }
+            #error h2{
+                position: absolute;
+                /* 置中 */
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                font-size: 80px;
+                color: red;
+            }
+        </style>
+</head>
+
+<body>
+    <div class="row m-2">
+        <div class="col-6">
+            <!-- <h1 class="font-weight-bolder">載入成功</h1> -->
+            <canvas id="barChart1"></canvas>
+        </div>
+        <div class="col-6">
+            <div id="error">
+                <canvas id="barChart2"></canvas>
+                <h2></h2>
+            </div>
+        </div>
+        <div class="col-6 mt-5"><canvas id="barChart3"></canvas></div>
+        <div class="col-6 mt-5"><canvas id="barChart4"></canvas></div>
+    </div>
+    
+    
+    
+    <!-- jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>  
+    
+    <!-- chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" integrity="sha512-QEiC894KVkN9Tsoi6+mKf8HaCLJvyA6QIRzY5KrfINXYuP9NxdIkRQhGq3BZi0J4I7V5SidGM3XUQ5wFiMDuWg==" crossorigin="anonymous"></script>
+    
+    <script>
+        var chartData = {
+            labels: ["美國", "日本", "泰國", "琉球", "紐西蘭", "澳洲"],
+            data: [8, 22, 13, 15, 17, 21]
+        };
+        let apiUrl="https://raw.githubusercontent.com/wanping0924/FileStorage/master/ChartData.json";
+        let failapiUrl="https://raw.githubusercontent.com/wanping0924/FileStorage/master/ChartData2.json";
+        let chart1 = document.getElementById("barChart1");
+        let chart2 = document.getElementById("barChart2");
+        let chart3 = document.getElementById("barChart3");
+        let chart4 = document.getElementById("barChart4");
+        
+        //類似window.onload
+        var request1 = $.ajax({
+            url:apiUrl,
+            method:"Get",
+            dataType:"json",
+        });
+        //是先有圖表 再取得資料後 再帶進圖表
+        //ajax是取得資料
+        // //若資料取得成功 再把資料帶進圖表
+        request1.done(function (chartData){
+            let succes = document.querySelectorAll(".col-6")[0];
+            let successText = document.createElement("h1");
+            successText.setAttribute("class","font-weight-bolder");
+            successText.innerText="資料載入成功";
+            succes.prepend(successText);
+
+            myChart1.data.labels = chartData.labels;
+            myChart1.data.datasets[0].data = chartData.data;
+            myChart1.update();//資料做改變後 圖表做更新
+        });
+        request1.fail(function (){
+            alert("載入失敗");
+        });
+
+
+        var request2 = $.ajax({
+            url:failapiUrl,
+            method:"Get",
+            dataType:"json",
+        });
+        request2.done(function (chartData){
+            myChart1.data.labels = chartData.labels;
+            myChart1.data.datasets[0].data = chartData.data;
+            myChart1.update();//資料做改變後 圖表做更新
+        });
+        request2.fail(function (){
+            let succes = document.querySelectorAll(".col-6")[1];
+            let successText = document.createElement("h1");
+            successText.setAttribute("class","font-weight-bolder");
+            successText.innerText="資料載入失敗";
+            succes.prepend(successText);
+            let errorMsg = document.querySelector("#error h2");
+            errorMsg.innerText = "載入失敗";
+        });
+
+
+        var request3 = $.ajax({
+            url:apiUrl,
+            method:"Get",
+            dataType:"json",
+        });
+        //若直接寫命名function有帶參數會直接執行 不會延遲執行
+        //所以要寫匿名function(){}
+        //匿名function()包 命名function 要告訴他我有個匿名function但要延遲執行裡面的事情
+        request3.done(function (chartData){
+            let succes = document.querySelectorAll(".col-6")[2];
+            let successText = document.createElement("h1");
+            successText.setAttribute("class","font-weight-bolder");
+            successText.innerText="資料延遲載入";
+            succes.prepend(successText);
+            // alert("載入")
+            setTimeout(function(){
+                data(chartData)
+            },5000);
+            clearTimeout();
+        });
+        function data(chartData){
+            myChart3.data.labels = chartData.labels;
+            myChart3.data.datasets[0].data = chartData.data;
+            myChart3.update();//資料做改變後 圖表做更新
+        }
+        request3.fail(function (){
+            let errorMsg = document.querySelector("#error h1");
+            errorMsg.innerText = "載入失敗";
+        });
+
+
+        $.ajax({
+            url:apiUrl,
+            method:"Get",
+            dataType:"json",
+        })
+        .done(function (chartData){
+            let succes = document.querySelectorAll(".col-6")[3];
+            let successText = document.createElement("h1");
+            successText.setAttribute("class","font-weight-bolder");
+            successText.innerText="資料載入後更新";
+            succes.prepend(successText);
+            myChart4.data.labels = chartData.labels;
+            myChart4.data.datasets[0].data = chartData.data;
+            myChart4.update();//資料做改變後 圖表做更新
+            setTimeout(function(){
+                Updatedata()
+            },5000);
+            clearTimeout();
+        })
+        .fail(function (){
+            let errorMsg = document.querySelector("#error h1");
+            errorMsg.innerText = "載入失敗";
+        });
+        function Updatedata(){
+            myChart4.data.labels=["美國", "日本", "泰國", "琉球", "紐西蘭", "澳洲","南韓"];
+            myChart4.data.datasets[0].data = [8,22,13,15,17,15,10];
+            myChart4.update()
+        }
+
+        //資料載入成功
+        //原有圖表
+        var myChart1 = new Chart(chart1, {
+            type: "bar",//指定為Bar長條圖
+            data: {
+                labels:'', //chartData.labels,//["美國", "日本", "泰國", "琉球", "紐西蘭", "澳洲"]
+                datasets: [{
+                    label: '旅遊行程投票',
+                    data:'',//chartData.data,//[8, 22, 13, 15, 17, 21],
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: ['rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+        
+        //資料載入失敗
+        var myChart2 = new Chart(chart2, {
+            type: "bar",//指定為Bar長條圖
+            data: {
+                labels:'', //chartData.labels,["美國", "日本", "泰國", "琉球", "紐西蘭", "澳洲"]
+                datasets: [{
+                    label: '旅遊行程投票',
+                    data:'', //chartData.data,[8, 22, 13, 15, 17, 21]
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: ['rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+        //資料延遲載入成功
+        var myChart3 = new Chart(chart3, {
+            type: "pie",//指定為pie圖
+            data: {
+                 labels:'', //:chartData.labels,["美國", "日本", "泰國", "琉球", "紐西蘭", "澳洲"]
+                datasets: [{
+                    label: '旅遊行程投票',
+                     data:'', //chartData.data,[8, 22, 13, 15, 17, 21]
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: ['rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+
+        //資料更新
+        var myChart4 = new Chart(chart4, {
+            type: "pie",//指定為pie圖
+            data: {
+                labels:'', //:chartData.labels,["美國", "日本", "泰國", "琉球", "紐西蘭", "澳洲"]
+                datasets: [{
+                    label: '旅遊行程投票',
+                     data:'', //chartData.data,[8, 22, 13, 15, 17, 21]
+                    backgroundColor: ['rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(205, 110, 64, 0.3)'
+                    ],
+                    borderColor: ['rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(205, 130, 80, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
