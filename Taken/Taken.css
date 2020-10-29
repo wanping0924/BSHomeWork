@@ -72,7 +72,7 @@
 
 /* 產品1 */
 .product-1 .prod1-img{
-    border: 1px solid red;
+    border: 1px solid gray;
 }
 .product-1 .prod-info{
     /* width: 100%; */
